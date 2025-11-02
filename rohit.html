@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SteelWorks Fabrication Store</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #1e293b;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    nav {
+      background-color: #334155;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 5px 15px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    .search-bar input {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      width: 220px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product h3 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .product p {
+      margin: 5px 0;
+    }
+
+    .product button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .product button:hover {
+      background-color: #1e40af;
+    }
+
+    #cart {
+      background: #fff;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    #cart h2 {
+      margin-top: 0;
+    }
+
+    footer {
+      background-color: #1e293b;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    .about, .location {
+      padding: 20px;
+      background: white;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .remove-btn {
+      background-color: #dc2626;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      background-color: #b91c1c;
+    }
+
+    @media (max-width: 600px) {
+      .search-bar input { width: 90%; }
+      .product { width: 90%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>SteelWorks Fabrication Store</h1>
+  <p>Your one-stop shop for fabrication materials</p>
+</header>
+
+<nav>
+  <a href="#products">Products</a>
+  <a href="#about">About</a>
+  <a href="#location">Location</a>
+  <a href="#cart">View Cart</a>
+</nav>
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search for materials..." onkeyup="searchProducts()">
+</div>
+
+<section id="products" class="container">
+  <!-- Products -->
+</section>
+
+<section id="cart">
+  <h2>🛒 Your Cart</h2>
+  <ul id="cartItems"></ul>
+  <h3 id="total">Total: ₹0</h3>
+</section>
+
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <p>
+    Welcome to <b>SteelWorks Fabrication Store</b> — we provide high-quality materials for all your fabrication needs.
+    From stainless steel to aluminum sheets, we ensure durable and precise products for professional and DIY projects.
+  </p>
+  <p><b>Owner:</b> Rohit Telore</p>
+  <p><b>Email:</b> <a href="mailto:rohittelore7@gmail.com">rohittelore7@gmail.com</a></p>
+  <p><b>Contact:</b> 8080619017</p>
+</section>
+
+<section id="location" class="location">
+  <h2>Our Location</h2>
+  <p>📍 <b>Address:</b> Bramhani Shani Shignapur Road, Tal. Rahuri, Dist. Ahilyanagar</p>
+  <p>🕒 <b>Open:</b> Mon–Sat, 9 AM – 7 PM</p>
+</section>
+
+<footer>
+  <p>&copy; 2025 SteelWorks Fabrication Store | Designed by <b>Rohit Telore</b></p>
+</footer>
+
+<script>
+  const products = [
+    { name: "Mild Steel Rod", price: 250, img: "https://5.imimg.com/data5/SY/ZX/WJ/SELLER-2446578/mild-steel-rod-500x500.jpg" },
+    { name: "Aluminum Sheet", price: 500, img: "https://res.cloudinary.com/rsc/image/upload/b_rgb:FFFFFF,c_pad,dpr_1.0,f_auto,q_auto,w_700/c_pad,w_700/F0434043-01" },
+    { name: "Stainless Steel Pipe", price: 700, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrL9crBfNsR4HR3bzP9ik1w2bxOjPmH9JlzA&s" },
+    { name: "Iron Plate", price: 400, img: "https://cpimg.tistatic.com/06329496/b/4/Iron-Plate.jpg" },
+    { name: "Copper Wire", price: 350, img: "https://punchlistzero.com/wp-content/uploads/2021/07/copper-wire-818x1024.jpg" },
+    { name: "Brass Sheet", price: 550, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbQvujhv2KfYUEKxoqFR_6fhCHDMDKusf0iQ&s" },
+    { name: "Steel Mesh", price: 300, img: "https://res.cloudinary.com/expometals/image/upload/f_auto/q_auto/c_pad,h_225,w_320/v1716545513/expometals/wiki/general/wire-mesh.png?_a=DATAdtAAZAA0" },
+    { name: "Aluminum Angle", price: 280, img: "https://m.media-amazon.com/images/I/41NYWMEoTAL._AC_UF1000,1000_QL80_.jpg" },
+    { name: "Metal Grating", price: 450, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMfMTCK53C-m1f7hcSfi7cL-c1XmS_4cc8Vw&s" },
+    { name: "Welding Rods", price: 200, img: "https://m.media-amazon.com/images/I/31j1CtM-MkL._AC_UF1000,1000_QL80_.jpg" },
+    { name: "GI Pipe", price: 600, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH-h4GqUekJjsmzRkZuN7pPWrtgirnQ43OnA&s" }
+  ];
+
+  const productContainer = document.getElementById('products');
+  const cartItems = document.getElementById('cartItems');
+  const totalDisplay = document.getElementById('total');
+  let cart = [];
+
+  function renderProducts() {
+    productContainer.innerHTML = "";
+    products.forEach((p, index) => {
+      const div = document.createElement('div');
+      div.classList.add('product');
+      div.innerHTML = `
+        <img src="${p.img}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p>Price: ₹${p.price}</p>
+        <button onclick="addToCart(${index})">Add to Cart</button>
+      `;
+      productContainer.appendChild(div);
+    });
+  }
+
+  function addToCart(index) {
+    const product = products[index];
+    cart.push(product);
+    updateCart();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+
+  function updateCart() {
+    cartItems.innerHTML = "";
+    let total = 0;
+    cart.forEach((item, i) => {
+      total += item.price;
+      const li = document.createElement('li');
+      li.innerHTML = `${item.name} - ₹${item.price} <button class="remove-btn" onclick="removeFromCart(${i})">Remove</button>`;
+      cartItems.appendChild(li);
+    });
+    totalDisplay.textContent = `Total: ₹${total}`;
+  }
+
+  function searchProducts() {
+    const searchValue = document.getElementById('searchInput').value.toLowerCase();
+    const filtered = products.filter(p => p.name.toLowerCase().includes(searchValue));
+    productContainer.innerHTML = "";
+    filtered.forEach((p, index) => {
+      const div = document.createElement('div');
+      div.classList.add('product');
+      div.innerHTML = `
+        <img src="${p.img}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p>Price: ₹${p.price}</p>
+        <button onclick="addToCart(${products.indexOf(p)})">Add to Cart</button>
+      `;
+      productContainer.appendChild(div);
+    });
+  }
+
+  renderProducts();
+</script>
+
+</body>
+</html>
